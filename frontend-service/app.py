@@ -80,7 +80,7 @@ st.markdown(
             margin: 10px 0;
         }
         .stApp {
-            background-color: blanchedalmond    ;
+            background-color: white    ;
         }
     </style>
     """,
