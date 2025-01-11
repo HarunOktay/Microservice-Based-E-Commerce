@@ -1,6 +1,16 @@
-FROM python:3.9-slim
+FROM golang:1.21-alpine
+
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+
+# git ekle
+RUN apk add --no-cache git
+
 COPY . .
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8001"]
+
+# Önce go get çalıştır
+RUN go get github.com/gin-gonic/gin
+RUN go build -o main .
+
+EXPOSE 8001
+
+CMD ["./main"]
