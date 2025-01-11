@@ -180,7 +180,7 @@ col1, col2, col3 = st.columns(3)
 try:
     with col1:
         try:
-            response = requests.get("http://user-service:8001/api/users", timeout=5)
+            response = requests.get("http://user-service:8001/api/users", timeout=2)
             if response.status_code == 200:
                 st.success("✅ Kullanıcı Servisi Aktif")
             else:
@@ -190,7 +190,7 @@ try:
 
     with col2:
         try:
-            response = requests.get("http://product-service:8002/api/products", timeout=5)
+            response = requests.get("http://product-service:8002/api/products", timeout=2)
             if response.status_code == 200:
                 st.success("✅ Ürün Servisi Aktif")
             else:
@@ -200,7 +200,7 @@ try:
 
     with col3:
         try:
-            response = requests.get("http://order-service:8003/api/orders", timeout=5)
+            response = requests.get("http://order-service:8003/api/orders", timeout=2)
             if response.status_code == 200:
                 st.success("✅ Sipariş Servisi Aktif")
             else:
