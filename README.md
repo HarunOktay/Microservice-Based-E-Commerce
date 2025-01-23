@@ -140,7 +140,3 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-This `README.md` provides a comprehensive overview of your project, making it easy for users and contributors to understand, set up, and extend the system. Let me know if you'd like to adjust or add anything!
