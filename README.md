@@ -98,7 +98,7 @@ Before running the project, ensure you have the following installed:
 Once the containers are up and running, you can access the application as follows:
 
 1. **Frontend**:
-   - Open your browser and go to `http://localhost`.
+   - Open your browser and go to `http://localhost:8501`.
    - This will load the Streamlit-based frontend where you can interact with the platform
 ---
 ## API Endpoints
