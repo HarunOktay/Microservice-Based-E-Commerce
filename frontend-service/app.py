@@ -100,7 +100,7 @@ with left_col:
         email = st.text_input("Email", placeholder="ornek@email.com")
         if st.button("➕ Kullanıcı Oluştur"):
             try:
-                response = requests.post("http://user-service:8001/api/users", 
+                response = requests.post("http://nginx/api/users", 
                                       json={"name": name, "email": email})
                 if response.status_code == 200:
                     st.success("✅ Kullanıcı başarıyla oluşturuldu!")
@@ -112,7 +112,7 @@ with left_col:
         price = st.number_input("Fiyat (TL)", min_value=0.0, step=0.01)
         if st.button("➕ Ürün Oluştur"):
             try:
-                response = requests.post("http://product-service:8002/api/products", 
+                response = requests.post("http://nginx/api/products", 
                                       json={"name": product_name, "price": price})
                 if response.status_code == 200:
                     st.success("✅ Ürün başarıyla oluşturuldu!")
@@ -121,7 +121,7 @@ with left_col:
 
     with st.expander("🛒 Yeni Sipariş Oluştur", expanded=True):
         try:
-            users_response = requests.get("http://user-service:8001/api/users")
+            users_response = requests.get("http://nginx/api/users")
             users = users_response.json()
             usernames = [user["name"] for user in users.values()]
             username = st.selectbox("Kullanıcı Seçin", usernames)
@@ -130,7 +130,7 @@ with left_col:
             username = st.text_input("Kullanıcı Adı")
 
         try:
-            products_response = requests.get("http://product-service:8002/api/products")
+            products_response = requests.get("http://nginx/api/products")
             products = products_response.json()
             product_names = [product["name"] for product in products.values()]
             selected_products = st.multiselect("Ürünleri Seçin", product_names)
@@ -142,7 +142,7 @@ with left_col:
 
         if st.button("➕ Sipariş Oluştur"):
             try:
-                response = requests.post("http://order-service:8003/api/orders", 
+                response = requests.post("http://nginx/api/orders", 
                                       json={
                                           "username": username,
                                           "product_names": selected_products,
@@ -160,15 +160,15 @@ with right_col:
     if st.button("🔄 Verileri Yenile", key="refresh"):
         try:
             st.markdown("### 👥 Kullanıcılar")
-            users = requests.get("http://user-service:8001/api/users").json()
+            users = requests.get("http://nginx/api/users").json()
             st.json(users)
 
             st.markdown("### 📦 Ürünler")
-            products = requests.get("http://product-service:8002/api/products").json()
+            products = requests.get("http://nginx/api/products").json()
             st.json(products)
 
             st.markdown("### 🛒 Siparişler")
-            orders = requests.get("http://order-service:8003/api/orders").json()
+            orders = requests.get("http://nginx/api/orders").json()
             st.json(orders)
         except Exception as e:
             st.error(f"❌ Veri yüklenirken hata oluştu: {str(e)}")
@@ -180,7 +180,7 @@ col1, col2, col3 = st.columns(3)
 try:
     with col1:
         try:
-            response = requests.get("http://user-service:8001/api/users", timeout=2)
+            response = requests.get("http://nginx/api/users", timeout=2)
             if response.status_code == 200:
                 st.success("✅ Kullanıcı Servisi Aktif")
             else:
@@ -190,7 +190,7 @@ try:
 
     with col2:
         try:
-            response = requests.get("http://product-service:8002/api/products", timeout=2)
+            response = requests.get("http://nginx/api/products", timeout=2)
             if response.status_code == 200:
                 st.success("✅ Ürün Servisi Aktif")
             else:
@@ -200,7 +200,7 @@ try:
 
     with col3:
         try:
-            response = requests.get("http://order-service:8003/api/orders", timeout=2)
+            response = requests.get("http://nginx/api/orders", timeout=2)
             if response.status_code == 200:
                 st.success("✅ Sipariş Servisi Aktif")
             else:
