@@ -80,8 +80,8 @@ Before running the project, ensure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/microservice-ecommerce.git
-   cd microservice-ecommerce
+   git clone https://github.com/HarunOktay/Microservice-Based-E-Commerce
+   cd Microservice-Based-E-Commerce
    ```
 
 2. Build and start the containers using Docker Compose:
